@@ -17,7 +17,11 @@ public class Review extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, length = 50)
+
+    @Column(nullable = false, length = 30)
+    private String title;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
     private Float score;
@@ -30,6 +34,4 @@ public class Review extends BaseEntity {
     @JoinColumn(name = "store_id")
     private Store store;
 
-    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
-    private List<ReviewImage> reviewImageList = new ArrayList<>();
 }
