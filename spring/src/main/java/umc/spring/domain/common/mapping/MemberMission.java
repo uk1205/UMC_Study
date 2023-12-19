@@ -1,9 +1,11 @@
-package umc.spring.domain.mapping;
+package umc.spring.domain.common.mapping;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import umc.spring.domain.FoodCategory;
 import umc.spring.domain.Member;
 import umc.spring.domain.Mission;
 import umc.spring.domain.common.BaseEntity;
-import umc.spring.domain.enums.MissionStatus;
+import umc.spring.domain.common.enums.MissionStatus;
 
 import javax.persistence.*;
 
@@ -19,7 +21,8 @@ public class MemberMission extends BaseEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(15)")
+//    @Column(nullable = false, length = 15)
+//    @ColumnDefault("'NOTYET'")
     private MissionStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)

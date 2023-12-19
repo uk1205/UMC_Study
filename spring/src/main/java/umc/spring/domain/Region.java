@@ -1,7 +1,8 @@
 package umc.spring.domain;
+
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
-import umc.spring.domain.mapping.MemberPrefer;
+import umc.spring.domain.common.mapping.MemberMission;
 
 import javax.persistence.*;
 import java.util.ArrayList;

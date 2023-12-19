@@ -1,7 +1,8 @@
 package umc.spring.domain;
+
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
-import umc.spring.domain.mapping.MemberMission;
+import umc.spring.domain.common.mapping.MemberMission;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -14,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class Mission extends BaseEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,9 +22,10 @@ public class Mission extends BaseEntity {
     @Column(nullable = false)
     private Integer reward;
 
+    @Column(nullable = false)
     private LocalDate deadline;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String missionSpec;
 
     @ManyToOne(fetch = FetchType.LAZY)

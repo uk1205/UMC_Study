@@ -1,8 +1,10 @@
 package umc.spring.domain;
+
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
 
 import javax.persistence.*;
+
 @Entity
 @Getter
 @Builder

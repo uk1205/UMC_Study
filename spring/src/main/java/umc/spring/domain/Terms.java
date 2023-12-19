@@ -1,7 +1,8 @@
 package umc.spring.domain;
+
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
-import umc.spring.domain.mapping.MemberAgree;
+import umc.spring.domain.common.mapping.MemberAgree;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,10 +22,11 @@ public class Terms extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String title;
 
-
-    @Column(nullable = false, length = 50)
+    @Lob //body 필드 매우 큰 텍스트 정보에 유리
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
+    @Column(nullable = false, columnDefinition = "boolean default false")
     private Boolean optional;
 
     @OneToMany(mappedBy = "terms", cascade = CascadeType.ALL)

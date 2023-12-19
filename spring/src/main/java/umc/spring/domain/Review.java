@@ -1,10 +1,9 @@
 package umc.spring.domain;
+
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
-import umc.spring.domain.mapping.MemberPrefer;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,10 +20,11 @@ public class Review extends BaseEntity {
     @Column(nullable = false, length = 30)
     private String title;
 
+    @Lob //body 필드 매우 큰 텍스트 정보에 유리
     @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
-    private Float score;
+    private Integer score;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
@@ -34,4 +34,6 @@ public class Review extends BaseEntity {
     @JoinColumn(name = "store_id")
     private Store store;
 
+    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
+    private List<ReviewImage> reviewImageList;
 }
